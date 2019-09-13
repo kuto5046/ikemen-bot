@@ -31,17 +31,17 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+     line_bot_api.reply_message(
+     	event.reply_token,
+        TextSendMessage(text="お疲れさま"))
+
+
 # def handle_message(event):
 #     line_bot_api.reply_message(
 #     	event.reply_token,
-#         TextSendMessage(text=event.message.text))
-
-
-def handle_message(event):
-    line_bot_api.reply_message(
-    	event.reply_token,
-	ImageSendMessage(original_content_url="https://symfo.web.fc2.com/sample_src/lena.jpg", 
-			 preview_image_url="https://symfo.web.fc2.com/sample_src/lena_preview.jpg"))
+# 	ImageSendMessage(original_content_url="https://symfo.web.fc2.com/sample_src/lena.jpg", 
+# 			 preview_image_url="https://symfo.web.fc2.com/sample_src/lena_preview.jpg"))
 
 
 if __name__ == "__main__":
