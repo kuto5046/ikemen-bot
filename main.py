@@ -35,11 +35,11 @@ def get_text():
 
     # 送信するテキスト
     if (WORK, HOLIDAY) == (True, False):
-        text_list = ["今日もファイト！", "無理しないでね", "頑張っててえらい！"]
+        text_list = ["今日もファイト！", "無理しないでね", "頑張っててえらい！", "はいどうぞ", "これで元気出して"]
     elif (WORK, HOLIDAY) == (False, False):
-        text_list = ["今日もお疲れさま", "よく頑張ったね", "ご褒美だよ"]
+        text_list = ["今日も1日お疲れさま", "よく頑張ったね", "ご褒美だよ", "はいどうぞ", "これで元気出して"]
     else:
-        text_list = ["休日だからゆっくり休んでね", "いつもご苦労さま", "休日楽しんでね"]
+        text_list = ["ゆっくり休んでね", "いつもご苦労さま", "休日楽しんでね", "はいどうぞ", "これで元気出して"]
     return text_list
 
 
@@ -121,8 +121,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # 乱数の設定
-    random_text = random.randint(0, 2)
-    random_img = random.randint(0, 99)
+    random_text = random.randint(0, len(text_list)-1)
+    random_img = random.randint(0, len(img_url_list)-1)
 
     line_bot_api.reply_message(
         event.reply_token,
