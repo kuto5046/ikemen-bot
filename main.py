@@ -18,10 +18,6 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-# 乱数の設定
-random_text = random.randint(0, 2)
-random_img = random.randint(0, 99)
-
 
 def get_text():
     hour = datetime.datetime.now().hour
@@ -124,6 +120,10 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # 乱数の設定
+    random_text = random.randint(0, 2)
+    random_img = random.randint(0, 99)
+
     line_bot_api.reply_message(
         event.reply_token,
         [ImageSendMessage(original_content_url=img_url_list[random_img],
