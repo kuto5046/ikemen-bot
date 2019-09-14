@@ -101,7 +101,7 @@ target = "イケメン"
 num = 100
 google_image_serch = GoogleImageSerch()
 img_url_list = google_image_serch.search(target, num)
-text_list = get_text
+text_list = get_text()
 
 
 @app.route("/callback", methods=['POST'])
